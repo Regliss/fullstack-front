@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Titlepage from '../../components/UI/Title/TitlePage';
-import Input from '../../components/UI/input/Input';
+import Input from '../../components/UI/Input/Input';
 import styles from "./index.module.scss";
 
 const Index = () => {
