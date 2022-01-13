@@ -9,7 +9,8 @@ export default {
           }).then((res) => res.json())
     },
     login(user) {
-        return fetch(`${process.env.API_URL}api/v1/users/login`, {
+        // return fetch(`${process.env.API_URL}/api/v1/users/login`, {
+        return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
