@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Titlepage from '../../components/UI/Title/TitlePage';
+import React, { useState } from "react"; 
+import authService from "../../services/auth.service";
+import TitlePage from '../../components/UI/Title/TitlePage';
 import Input from '../../components/UI/Input/Input';
 import styles from "./index.module.scss";
 const Index = () => {
@@ -8,20 +9,13 @@ const Index = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user);
-        fetch(process.env.NEXT_PUBLIC_API_URL +"/api/v1/login", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
+        authService.login(user)
             .then(data => console.log(data))
             .catch(err => console.log(err))
     }
     return (
         <div>
-            <Titlepage title="Login page" />
+            <TitlePage title="Login page" />
             <form className={styles.form__login} onSubmit={(e) => handleSubmit(e)}>
                 <Input
                     type="email"
@@ -45,7 +39,7 @@ const Index = () => {
                         setUser({ ...user, password: e.target.value })
                     }}
                 />
-                <input className="btn btn-black" type="submit" value="Connexion" />
+                <input className="btn btn-black" type="submit" value="Connection" />
             </form>
         </div>
     );
