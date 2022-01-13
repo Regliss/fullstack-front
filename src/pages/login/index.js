@@ -8,7 +8,7 @@ const Index = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user);
-        fetch(process.env.API_URL +"/api/v1/login", {
+        fetch(process.env.NEXT_PUBLIC_API_URL +"/api/v1/login", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

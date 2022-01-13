@@ -1,6 +1,6 @@
 module.exports = {
     reactStrictMode: true,
     env: {
-        API_URL: process.env.API_URL,
+        NEXT_PUBLIC_API_URLAPI_URL: process.env.API_URL,
     }
 }
