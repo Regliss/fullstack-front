@@ -1,6 +1,7 @@
 export default {
     register(user) {
-        return fetch(`${process.env.API_URL}api/v1/users/register`, {
+        // return fetch(`${process.env.API_URL}api/v1/users/register`, {
+        return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -9,8 +10,9 @@ export default {
           }).then((res) => res.json())
     },
     login(user) {
-        // return fetch(`${process.env.API_URL}/api/v1/users/login`, {
-        return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
+        // return fetch(process.env.API_URL+"/api/v1/users/login", {
+        return fetch("http://localhost:3131/api/v1/users/login", {
+        // return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

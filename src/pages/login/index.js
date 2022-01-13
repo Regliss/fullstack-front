@@ -1,6 +1,5 @@
-import React, { useState } from "react"; 
-import authService from "../../services/auth.service";
-import TitlePage from '../../components/UI/Title/TitlePage';
+import React, { useState } from "react";
+import Titlepage from '../../components/UI/Title/TitlePage';
 import Input from '../../components/UI/Input/Input';
 import styles from "./index.module.scss";
 const Index = () => {
@@ -9,13 +8,20 @@ const Index = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user);
-        authService.login(user)
+        fetch("http://localhost:3131/api/v1/login", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
     }
     return (
         <div>
-            <TitlePage title="Login page" />
+            <Titlepage title="Login page" />
             <form className={styles.form__login} onSubmit={(e) => handleSubmit(e)}>
                 <Input
                     type="email"
@@ -39,7 +45,7 @@ const Index = () => {
                         setUser({ ...user, password: e.target.value })
                     }}
                 />
-                <input className="btn btn-black" type="submit" value="Connection" />
+                <input className="btn btn-black" type="submit" value="Connexion" />
             </form>
         </div>
     );
