@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import styles from "./index.module.scss";
 import Titlepage from '../components/UI/Title/TitlePage'
 export default function Home() {
     return (
