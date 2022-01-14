@@ -1,8 +1,8 @@
 export default {
     register(user) {
-        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/register`, {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/register`, {
         // return fetch("http://localhost:3131/api/v1/users/register", {
-        return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
+        // return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/register`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
