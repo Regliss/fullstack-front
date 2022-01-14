@@ -24,7 +24,7 @@ const Index = () => {
     }
     return (
      
-        <div>
+        <div className="form__login">
             <TitlePage title="Login"/>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <Input 

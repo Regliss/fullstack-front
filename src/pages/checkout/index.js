@@ -3,7 +3,7 @@ import TitlePage from '../../components/UI/Title/TitlePage';
 import { loadStripe } from "@stripe/stripe-js";
 import stripeService from "../../services/stripe.service";
 
-const stripePromise = loadStripe("pk_test_2Ii2i2VuUc2rHExheuZnAChu002krOc8Fp");
+const stripePromise = loadStripe("pk_test_51IYB3kKHE4A4HHrOPwry6jr7QSnFpODKJliEseS4NYAxmsuAnRfVkNgfdDcSEsMPPOqCEc5NhCGowDFhoy5D9zlu00jW1rgElH");
 
 const Index = () => {
 
