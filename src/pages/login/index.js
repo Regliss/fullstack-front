@@ -1,51 +1,51 @@
-import React, { useState } from "react";
-import Titlepage from '../../components/UI/Title/TitlePage';
-import Input from '../../components/UI/Input/Input';
-import styles from "./index.module.scss";
-const Index = () => {
-    const [user, setUser] = useState({});
+import React, {useEffect, useState} from 'react';
+import TitlePage from "../../components/UI/Title/TitlePage";
+import Input from "../../components/UI/Input/Input";
+import authService from "../../services/auth.service";
+import { useRouter } from "next/router";
 
+const Index = () => {
+    const router = useRouter();
+    const [user, setUser] = useState({});
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user);
-        fetch("http://localhost:3131/api/v1/login", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+        authService.login(user)
+        .then((data) => {
+            console.log(data);
+            if (data.message) {
+              return false;
+            }
+            localStorage.setItem("token", data.token);
+            router.push("/account/profil");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     }
     return (
+     
         <div>
-            <Titlepage title="Login page" />
-            <form className={styles.form__login} onSubmit={(e) => handleSubmit(e)}>
-                <Input
-                    type="email"
-                    label="Email"
-                    id="email"
-                    name="email"
-                    placeholder="Mon email"
-                    required={true}
-                    onChange={(e) => {
-                        setUser({ ...user, email: e.target.value })
-                    }}
+            <TitlePage title="Login"/>
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <Input 
+                label="email"
+                id="email"
+                name="email"
+                placeholder="email"
+                onChange={(e) => {
+                    setUser({...user, email:e.target.value})
+                }}
                 />
-                <Input
-                    type="password"
-                    label="Mot de passe"
-                    id="password"
-                    name="password"
-                    placeholder="Mon mot de passe"
-                    required={true}
-                    onChange={(e) => {
-                        setUser({ ...user, password: e.target.value })
-                    }}
+                <Input 
+                label="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                onChange={(e) => {
+                    setUser({...user, password:e.target.value})
+                }}
                 />
-                <input className="btn btn-black" type="submit" value="Connexion" />
+                <input type="submit"/>
             </form>
         </div>
     );
