@@ -8,6 +8,7 @@ const Index = () => {
     const router = useRouter();
     const [user, setUser] = useState({});
     const handleSubmit = (e) => {
+        console.log(process.env.NODE_ENV);
         e.preventDefault();
         authService.login(user)
         .then((data) => {
@@ -24,7 +25,7 @@ const Index = () => {
     }
     return (
      
-        <div className="form__login">
+        <div>
             <TitlePage title="Login"/>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <Input 
