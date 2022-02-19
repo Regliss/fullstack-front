@@ -3,12 +3,12 @@ import TitlePage from "../../components/UI/Title/TitlePage";
 import Input from "../../components/UI/Input/Input";
 import authService from "../../services/auth.service";
 import { useRouter } from "next/router";
+import styles from "./index.module.scss";
 
 const Index = () => {
     const router = useRouter();
     const [user, setUser] = useState({});
     const handleSubmit = (e) => {
-        console.log(process.env.NODE_ENV);
         e.preventDefault();
         authService.login(user)
         .then((data) => {
@@ -27,8 +27,9 @@ const Index = () => {
      
         <div>
             <TitlePage title="Login"/>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
                 <Input 
+                type="email"
                 label="email"
                 id="email"
                 name="email"
@@ -38,6 +39,7 @@ const Index = () => {
                 }}
                 />
                 <Input 
+                type="password"
                 label="password"
                 id="password"
                 name="password"
@@ -46,7 +48,7 @@ const Index = () => {
                     setUser({...user, password:e.target.value})
                 }}
                 />
-                <input type="submit"/>
+                <input className="btn btn-black" type="submit"/>
             </form>
         </div>
     );

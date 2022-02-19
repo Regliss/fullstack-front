@@ -1,0 +1,11 @@
+.toast-container {
+    top: 110px!important;
+    z-index: 99999;
+}
+
+.toast-message {
+    border-radius: 5px!important;
+    .title {
+        display: none;
+    }
+}

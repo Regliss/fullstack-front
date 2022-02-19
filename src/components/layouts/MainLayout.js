@@ -5,19 +5,21 @@ import HeaderToolbar from '../header/HeaderToolbar/HeaderToolbar';
 import Footer from '../footer/Footer';
 import styles from "./MainLayout.module.scss";
 
-const Mainlayout = ({ children }) => {
+const Mainlayout = ({children}) => {
     return (
         <>
             <header className={styles.header__main}>
                 <HeaderLogo />
-                <HeaderMenu />
-                <HeaderToolbar />
+                <HeaderMenu/>
+                <HeaderToolbar/>
             </header>
             <main>
-                {children}
+                <div className={styles.container}>
+                    {children}
+                </div>
             </main>
             <footer>
-                <Footer />
+                <Footer/>
             </footer>
         </>
     );

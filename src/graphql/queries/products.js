@@ -5,7 +5,7 @@ export const getProducts = gql`
         getProducts{
         id,
         title,
-        price}
+        price,img}
     }
 `
 
@@ -14,6 +14,7 @@ export const getProduct = gql`
         getProduct (id:$id){
         id,
         title,
-        price}
+        price,
+        img}
     }
 `
