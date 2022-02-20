@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className={styles.footer__main}>
             <div className={styles.footer__logo}>
-                <img src={LogoImg.src} alt="Nike" />
+                {/* <img src={LogoImg.src} alt="Nike" /> */}
             </div>
         </div>
     );

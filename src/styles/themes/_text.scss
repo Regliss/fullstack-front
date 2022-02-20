@@ -1,11 +1,14 @@
 .text {
-    &-center {
+    &-center { 
         text-align: center;
     }
-    &-left {
+    &-left { 
         text-align: left;
-    }
+    }    
     &-right {
         text-align: right;
+    }
+    &-light {
+        color: $color-text;
     }
 }

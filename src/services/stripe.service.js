@@ -4,7 +4,7 @@ export default {
             method: "POST",
             headers: {
                 "content-type": "application/json",
-                "authorization":token
+                // "authorization":token
             },
             body: JSON.stringify(body),
         }).then((res) => res.json())

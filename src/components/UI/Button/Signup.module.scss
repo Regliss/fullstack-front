@@ -1,0 +1,21 @@
+.btn_sign_up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: auto;
+  max-width: 30%;
+  color: #fff;
+  background: #e50914;
+  text-transform: uppercase;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
+  border: 0;
+  cursor: pointer;
+
+  &_icon {
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
