@@ -7,13 +7,15 @@ export const getProducts = gql`
             title,
             description,
             img,
+            trailer,
             age,
             language,
             releaseDate,
             duration,
             director,
             distribution,
-            scriptwriter
+            scriptwriter,
+            genres{title}
         }
     }
 `
@@ -25,13 +27,15 @@ export const getProduct = gql`
             title,
             description,
             img,
+            trailer,
             age,
             language,
             releaseDate,
             duration,
             director,
             distribution,
-            scriptwriter
+            scriptwriter,
+            genres{title}
         }
     }
 `

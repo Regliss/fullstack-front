@@ -24,7 +24,7 @@ const Index = () => {
 
     return (
         <div className="page__shop">
-            <TitlePage title="Eshop"/>
+            <TitlePage title="Movies"/>
             <ProductGrid products={data.getProducts}/>
         </div>
     );
