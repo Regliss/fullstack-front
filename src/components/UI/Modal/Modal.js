@@ -9,8 +9,8 @@ const Modal = (props) => {
             <h2>{props.title}</h2>
             {props.children}
             <div className={styles.btn__group}>
-                <button className="btn btn-white" onClick={props.cancelFunction}>Annuler</button>
-                <button className="btn btn-black" onClick={props.validateFunction}>Valider</button>
+                {/* <button className="btn btn-white" onClick={props.cancelFunction}>Annuler</button>
+                <button className="btn btn-black" onClick={props.validateFunction}>Valider</button> */}
             </div>
         </div>
         </>

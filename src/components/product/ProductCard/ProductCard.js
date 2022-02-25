@@ -4,14 +4,24 @@ import CartContext from "../../../context/CartContext";
 import Image from "next/image";
 import styles from "./ProductCard.module.scss";
 import { toast, ToastContainer } from "react-nextjs-toast";
+import Modal from "../../../components/UI/Modal/Modal";
 
 const ProductCard = (props) => {
-  const { addItem } = useContext(CartContext);
+  // const { addItem } = useContext(CartContext);
+
+  // const [displayModal, setDisplayModal] = useState(false);
+
+  // const closeModal = () => {
+  //   setDisplayModal(!displayModal);
+  // };
+  // const validateModal = () => {
+  //   console.log("it's validated");
+  // };
 
   return (
     <div className={styles.product__card}>
       <ToastContainer align={"right"} position={"top"} />
-      <Link href={`/shop/${props.product.id}`}>
+      <Link href={`/movies/${props.product.id}`}>
         <a>
           <Image
             src={props.product.img}
@@ -21,11 +31,11 @@ const ProductCard = (props) => {
             layout="intrinsic"
           />
           <h2>{props.product.title}</h2>
-          <p className={styles.price}>{props.product.price} €</p>
+          {/* <p className={styles.price}>{props.product.price} €</p> */}
         </a>
       </Link>
       <div className={styles.btn__group}>
-        <button
+        {/* <button
           className="btn btn-black"
           onClick={() => {
             toast.notify(`Votre produit est bien ajouté au panier`, {
@@ -36,7 +46,7 @@ const ProductCard = (props) => {
           }}
         >
           Ajouter au panier
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -1,0 +1,29 @@
+.genre__content {
+    color: white;
+    width: 20%;
+    margin: 0 auto;
+    .btn__group {
+        display: flex;
+        align-items: flex-end;
+        margin: 10px 0px;
+    }
+    table {
+        width: 100%;
+        tr {
+            border-bottom: 1px solid lightgray;
+        }
+        thead {
+            width: 20%;
+            td {
+                font-weight: bold;
+            }
+        }
+        td {
+            padding: 20px 0px;
+            width: 20%;
+            a {
+                color: white;
+            }
+        }
+    }
+}
