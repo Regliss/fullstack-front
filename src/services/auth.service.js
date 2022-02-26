@@ -41,7 +41,7 @@ export default {
     },
     updateUser(token, user) {
         // return fetch("http://localhost:3131/api/v1/users/update-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/update-user`, {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/update-user`+user._id, {
             method: "PUT",
             headers: {
                 "authorization": token,
@@ -60,13 +60,27 @@ export default {
         })
         .then(res => res.json())
     },
-    deleteUser(user) {
-        // return fetch("http://localhost:3131/api/v1/users/update-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user.id}`, {
-            // method: "DELETE",
+    deleteUser(user, token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/users/user/delete/"+user._id, {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user._id}`, {
+            method: "DELETE",
             headers: {
                 "authorization": token,
-                // "content-type":"application/json"
+                "content-type":"application/json"
+            },
+            // body: JSON.stringify(user),
+        })
+        .then(res => res.json())
+    },
+    addAdminUser(token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/users/addadmin/", {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user._id}`, {
+            method: "POST",
+            headers: {
+                "authorization": token,
+                "content-type":"application/json"
             },
             // body: JSON.stringify(user),
         })

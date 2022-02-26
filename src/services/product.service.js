@@ -11,19 +11,19 @@ export default {
             // body: JSON.stringify(products),
           }).then((res) => res.json())
     },
-    getUser(token) {
+    getProduct(product, token) {
         // return fetch("http://localhost:3131/api/v1/users/get-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/get-user`, {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/products/products/get-user`+product._id, {
             headers: {
                 "authorization":token
             }
         })
         .then(res => res.json())
     },
-    updateUser(token, user) {
+    updateProduct(token, product) {
         // return fetch("http://localhost:3131/api/v1/users/update-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/update-user`, {
-            method: "PUT",
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/products/products/edit`+product._id, {
+            method: "POST",
             headers: {
                 "authorization": token,
                 "content-type":"application/json"
@@ -32,13 +32,30 @@ export default {
         })
         .then(res => res.json())
     },
-    verifyToken(token) {
-        // return fetch("http://localhost:3131/api/v1/users/verifytoken", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/verifytoken`, {
+    deleteProduct(product, token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/products/products/delete/"+product._id, {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/products/products/delete/${product._id}`, {
+            method: "DELETE",
             headers: {
-                "authorization":token
-            }
+                "authorization": token,
+                "content-type":"application/json"
+            },
+            // body: JSON.stringify(user),
         })
         .then(res => res.json())
-    }
+    },
+    addAdminProduct(token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/products/products/add-product", {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user._id}`, {
+            method: "POST",
+            headers: {
+                "authorization": token,
+                "content-type":"application/json"
+            },
+            // body: JSON.stringify(user),
+        })
+        .then(res => res.json())
+    },
 }

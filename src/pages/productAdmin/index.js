@@ -3,8 +3,10 @@ import Titlepage from "../../components/UI/Title/TitlePage";
 import styles from "./index.module.scss";
 import productService from '../../services/product.service';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 const Index = () => {
+    const router = useRouter();
     const [products, setProducts] = useState([]);
 
     useEffect(()=>{
@@ -14,6 +16,19 @@ const Index = () => {
         console.log(data);
     });
     }, [])
+
+    async function handleDelete (product) {
+        console.log("handle delete");
+        //console.log(product._id);
+        authService.deleteProduct(product)
+        .then((data) => {
+            console.log("data");
+            router.push("/productAdmin");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
   
     return (
       
@@ -62,9 +77,12 @@ const Index = () => {
                         </Link>
                     </td>
                     <td>
-                        <Link href="/productAdmin">
+                        {/* <Link href="/productAdmin">
                             <a><i className="fa-solid fa-trash-can"></i>delete</a>
-                        </Link>
+                        </Link> */}
+                        <button className={styles.step_button} onClick={()=>handleDelete(product)}>
+                        delete
+                        </button>
                     </td>
 
                 </tr>);

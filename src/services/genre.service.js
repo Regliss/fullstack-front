@@ -11,9 +11,9 @@ export default {
             // body: JSON.stringify(products),
           }).then((res) => res.json())
     },
-    getGenre(token) {
+    getGenre(genre, token) {
         // return fetch("http://localhost:3131/api/v1/users/get-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/genres/genre`, {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/genres/genre/`+genre._id, {
             headers: {
                 "authorization":token
             }
@@ -22,13 +22,39 @@ export default {
     },
     updateGenre(token, user) {
         // return fetch("http://localhost:3131/api/v1/users/update-user", {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/update-user`, {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/genres/genre/edit/`+product._id, {
             method: "PUT",
             headers: {
                 "authorization": token,
                 "content-type":"application/json"
             },
             body: JSON.stringify(user),
+        })
+        .then(res => res.json())
+    },
+    deleteGenre(genre, token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/genres/delete/"+genre._id, {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/products/products/delete/${product._id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": token,
+                "content-type":"application/json"
+            },
+            // body: JSON.stringify(user),
+        })
+        .then(res => res.json())
+    },
+    addAdminGenre(token) {
+        // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/genres/genre", {
+        // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user._id}`, {
+            method: "POST",
+            headers: {
+                "authorization": token,
+                "content-type":"application/json"
+            },
+            // body: JSON.stringify(user),
         })
         .then(res => res.json())
     },

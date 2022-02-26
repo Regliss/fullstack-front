@@ -1,13 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useRouter } from "next/router";
-import CartContext from "../../context/CartContext";
 import Titlepage from "../../components/UI/Title/TitlePage";
 import styles from "./index.module.scss";
 import authService from '../../services/auth.service';
 import Link from 'next/link';
 
 const Index = () => {
-    // const { deleteCart } = useContext(CartContext);
+    const router = useRouter();
     const [users, setUsers] = useState([]);
 
     useEffect(()=>{
@@ -17,21 +16,19 @@ const Index = () => {
         console.log(data);
     });
     }, [])
-    const handleClick = (e) => {
-        e.preventDefault();
+
+    async function handleDelete (user) {
+        console.log("handle delete");
+        //console.log(user._id);
         authService.deleteUser(user)
         .then((data) => {
-            console.log(data);
-            if (data.message) {
-              return false;
-            }
-            // localStorage.setItem("token", data.token);
+            console.log("data");
             router.push("/userAdmin");
           })
           .catch((err) => {
             console.log(err);
           });
-    }
+      };
     
     return (
       
@@ -39,6 +36,11 @@ const Index = () => {
       <Titlepage title="User admin" />
       <div className={styles.user__content}>
           <>
+          <div>
+              <Link href="/addUser">
+                <a className={styles.user_create}><i></i>Create</a>
+            </Link>
+          </div>
           <table>
             <thead>
               <tr>
@@ -46,7 +48,7 @@ const Index = () => {
                 <td>LastName</td>
                 <td>Subscribe</td>
                 <td>Premium</td>
-                <td>releaseDate</td>
+                <td>subscribeDate</td>
                 <td>Admin</td>
                 <td>Email</td>
                 <td>Password</td>
@@ -64,7 +66,7 @@ users.map((user, index)=>{
     <td>{user.lastName}</td>
     <td>{user.isSubscribe ? "oui" : "non"}</td>
     <td>{user.isPremium ? "oui" : "non"}</td>
-    <td>{user.releaseDate ? user.releaseDate : "non"}</td>
+    <td>{user.subscribeDate ? user.releaseDate : "non"}</td>
     <td>{ user.isAdmin ? "oui" : "non"}</td>
     <td>{user.email}</td>
     <td>{user.password}</td>
@@ -75,9 +77,13 @@ users.map((user, index)=>{
         </Link>
     </td>
     <td>
-        <Link href="/userAdmin">
-            <a><i className="fa-solid fa-trash-can" onClick={(e) => handleClick(e)}></i>delete</a>
-        </Link>
+        {/* <Link href="/userAdmin">
+            <a><i className="fa-solid fa-trash-can" onClick={handleDelete}></i>delete</a>
+        </Link> */}
+        <button className={styles.step_button} onClick={()=>handleDelete(user)}>
+          {/* <button className={styles.step_button} onClick={() => setStep(step + 1)}> */}
+          delete
+          </button>
     </td>
 
   </tr>);

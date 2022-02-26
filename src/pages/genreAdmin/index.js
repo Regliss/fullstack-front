@@ -3,8 +3,10 @@ import Titlepage from "../../components/UI/Title/TitlePage";
 import styles from "./index.module.scss";
 import genreService from '../../services/genre.service';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 const Index = () => {
+    const router = useRouter();
     const [genres, setGenres] = useState([]);
 
     useEffect(()=>{
@@ -14,6 +16,19 @@ const Index = () => {
         console.log(data);
     });
     }, [])
+
+    async function handleDelete (genre) {
+        console.log("handle delete");
+        //console.log(genre._id);
+        genreService.deleteGenre(genre)
+        .then((data) => {
+            console.log("data");
+            router.push("/genreAdmin");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
   
     return (
       
@@ -43,9 +58,9 @@ const Index = () => {
                         </Link>
                     </td>
                     <td>
-                        <Link href="/productAdmin">
-                            <a><i className="fa-solid fa-trash-can"></i>delete</a>
-                        </Link>
+                        <button className={styles.step_button} onClick={()=>handleDelete(genre)}>
+                        delete
+                        </button>
                     </td>
 
                 </tr>);
