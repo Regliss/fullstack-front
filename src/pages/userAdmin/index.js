@@ -38,7 +38,8 @@ const Index = () => {
           <>
           <div>
             <button className={styles.product_create}>
-                <a href="/addUser">Create</a>
+                {/* <a href="/addUser">Create</a> */}
+                <Link href="/addUser">Create</Link>
             </button>
           </div>
           <table>
