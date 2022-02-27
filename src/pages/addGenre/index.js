@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { UseState } from "react";
 import genreService from "../../services/genre.service";
 import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
 import Input from "../../components/UI/Input/Input";
 import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
 import styles from "./index.module.scss";
-import { useRouter } from "next/router";
+import { UseRouter } from "next/router";
 
 const index = () => {
-  const router = useRouter();
-  const [genre, setGenre] = useState();
+  const router = UseRouter();
+  const [genre, setGenre] = UseState();
 
   const handleSubmit = (e) => {
     console.log(genre);
