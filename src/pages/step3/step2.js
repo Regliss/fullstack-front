@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./index.module.scss";
 
-const Step = (props) => {
+const Step2 = (props) => {
   return (
     <div className={styles.step}>
         {
@@ -22,4 +22,4 @@ const Step = (props) => {
   )
 }
 
-export default Step
+export default Step2

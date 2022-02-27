@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import Step from "./Step";
+import Step from "./Step2";
 import styles from "./index.module.scss";
 import { loadStripe } from "@stripe/stripe-js";
 import stripeService from "../../services/stripe.service";
