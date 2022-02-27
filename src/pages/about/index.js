@@ -29,7 +29,7 @@ const Index = () => {
     console.log(element);
   });
 
-  localStorage.setItem('test', parsedArray);
+  // localStorage.setItem('test', parsedArray);
 
   return (
     <div className={styles.page__about}>
