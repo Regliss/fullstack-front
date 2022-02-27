@@ -14,23 +14,23 @@ const HeaderMenu = () => {
               <a>Home</a>
             </Link>
           </li>
-          <li
+          {/* <li
             className={router.pathname == "/tv-programmes" ? styles.active : ""}
           >
             <Link href="/tv-programmes">
               <a>Tv Programmes</a>
             </Link>
-          </li>
-          <li className={router.pathname == "/genres" ? styles.active : ""}>
+          </li> */}
+          {/* <li className={router.pathname == "/genres" ? styles.active : ""}>
             <Link href="/genres">
               <a>Films</a>
             </Link>
-          </li>
-          <li className={router.pathname == "/wishlist" ? styles.active : ""}>
+          </li> */}
+          {/* <li className={router.pathname == "/wishlist" ? styles.active : ""}>
             <Link href="/wishlist">
               <a>My List</a>
             </Link>
-          </li>
+          </li> */}
           <li className={router.pathname == "/userAdmin" ? styles.active : ""}>
             <Link href="/userAdmin">
               <a>User Admin</a>

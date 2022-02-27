@@ -40,7 +40,7 @@ const Index = () => {
       <div className={styles.product__img}>
         <Image
           src={data.getProduct.img}
-          alt={data.getProduct.title}
+          // alt={data.getProduct.title}
           width="400"
           height="400"
           layout="intrinsic"

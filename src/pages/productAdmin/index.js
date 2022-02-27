@@ -55,7 +55,6 @@ const Index = () => {
                 <td>Director</td>
                 <td>Distribution</td>
                 <td>Scriptwriter</td>
-                <td>Edit</td>
                 <td>Delete</td>
               </tr>
             </thead>
@@ -75,12 +74,6 @@ const Index = () => {
                     <td>{product.description}</td>
                     <td>{product.distribution}</td>
                     <td>{product.scriptwriter}</td>
-                    <td>
-                        <Link href="/productAdmin">
-                            {/* <a><i className="fa-solid fa-trash-can"></i>edit</a> */}
-                            <a><i className={styles.product_action}></i>edit</a>
-                        </Link>
-                    </td>
                     <td>
                         {/* <Link href="/productAdmin">
                             <a><i className="fa-solid fa-trash-can"></i>delete</a>

@@ -6,14 +6,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import stripeService from "../../services/stripe.service";
 import RegisterButton from "../../components/UI/RegisterButton/RegisterButton"
 import Input from "../../components/UI/Input/Input";
-import Link from "next/link";
-import authService from "../../services/auth.service";
-import { useRouter } from "next/router";
 
 const stripePromise = loadStripe("pk_test_51IYB3kKHE4A4HHrOPwry6jr7QSnFpODKJliEseS4NYAxmsuAnRfVkNgfdDcSEsMPPOqCEc5NhCGowDFhoy5D9zlu00jW1rgElH");
 
 const Index = () => {
-  const router = useRouter();
+
   const stepsData = {
     one: {
       image: {
@@ -67,9 +64,9 @@ const Index = () => {
     },
   };
 
-  const [account, setAccount] = useState({isAdmin: false, firstName: ""});
+  const [account, setAccount] = useState({});
   const [plan, setPlan] = useState({label:"standard", price: 30});
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
 
   const handleConfirmation = async () => {
     // const token = localStorage.getItem('token');
@@ -111,83 +108,115 @@ const Index = () => {
       console.log(step)
       setStep(step + 1);
       console.log(step)
-    
-
   }
-
-  const handleSubmit = (e) => {
-    console.log(account);
-    e.preventDefault();
-    authService
-      .addAdminUser(account)
-      .then((data) => {
-        localStorage.setItem("token", JSON.stringify(data.token));
-        console.log(data);
-        router.push("/step3");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div className={styles.register}>
-      {step === 1 ? (
+      {step === 3 ? (
         <Step
-          image={stepsData.one.image}
-          indicator={stepsData.one.indicator}
-          title={stepsData.one.title}   
+          image={stepsData.three.image}
+          indicator={stepsData.three.indicator}
+          title={stepsData.three.title}
+          className={styles.signup_list_icon}
         >
-          <div className={styles.step_context}>
-            Netflix is personalized for you. Create a password to watch on any
-            device at any time.
-          </div>
+          <ul className={styles.step_list}>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              No commitments, cancel anytime.
+            </li>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              Everything on Netflix for one low price.
+            </li>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              Unlimited viewing on all your devices.
+            </li>
+          </ul>
           <RegisterButton onClick={() => setStep(step + 1)} />
         </Step>
       ) : (
         <></>
       )}
 
-      {step === 2 ? (
-        <Step indicator={stepsData.two.indicator} title={stepsData.two.title}
+      {step === 4 ? (
+        <Step
+          image={stepsData.four.image}
+          indicator={stepsData.four.indicator}
+          title={stepsData.four.title}
+          className={styles.signup_list_icon}
         >
-          <div className={styles.step_context}>
-            Just a few more steps and you&apos;re done! We hate paperwork, too.
-          </div>
-          <form className={styles.register_form}>
-            <Input
-              type="text"
-              placeholder="Email"
-              name="email"
-              id="email"
-              autoComplete="off"
-              required={true}
-              // value={email}
-              onChange={(e) => setAccount({ ...account, email: e.target.value })}
-            />
-            <Input
-              type="password"
-              placeholder="Add a password"
-              name="password"
-              id="password"
-              required={true}
-              // value={password}
-              onChange={(e) => setAccount({ ...account, password: e.target.value })}
-            />
-            <RegisterButton onClick={(e)=>{
-              e.preventDefault()
-              authService
-                .register(account)
-                .then((data) => {
-                  localStorage.setItem("token", JSON.stringify(data.token))
-                  console.log(data)
-                  router.push("/step3")
-                })
-                .catch((err) => {
-                  console.log(err)
-                })
-            }}/>
-          </form>
+          <ul className={styles.step_list}>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              Watch all you want. Ad-free.
+            </li>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              Recommendations just for you.
+            </li>
+            <li>
+              <Icon icon="akar-icons:check" className={styles.check_icon} />
+              Change or cancel your plan anytime.
+            </li>
+          </ul>
+          <table className={styles.table}>
+            <tbody>
+              <tr>
+                <td></td>
+                
+                <td className={styles.radio}>
+                  <input
+                    type="radio"
+                    name="input_radio"
+                    className={styles.input_radio}
+                    checked={plan === "standard"}
+                    value="standard"
+                    id="standard"
+                    onChange={() => setPlan({label: "standart", price: 30 })}
+                  />
+                  <label htmlFor="standard">Standard</label>
+                </td>
+                <td className={styles.radio}>
+                  <input
+                    type="radio"
+                    name="input_radio"
+                    className={styles.input_radio}
+                    checked={plan === "premium"}
+                    value="premium"
+                    id="premium"
+                    onChange={() => setPlan({label: "premium", price: 60 })}
+                  />
+                  <label htmlFor="premium">Premium</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Monthly price</td>
+                <td>EUR30.</td>
+                <td>EUR60.00</td>
+              </tr>
+              <tr>
+                <td>Video quality</td>
+                <td>Better</td>
+                <td>Best</td>
+              </tr>
+              <tr>
+                <td>Resolution</td>
+                <td>1080p</td>
+                <td>4K+HDR</td>
+              </tr>
+              <tr>
+                <td>Watch on your TV, computer, mobile phone and tablet</td>
+                <td>
+                  <span>Yes</span>
+                </td>
+                <td>
+                  <span>Yes</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <RegisterButton onClick={() => setStep(step + 1)} />
         </Step>
       ) : (
         <></>

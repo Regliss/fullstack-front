@@ -53,7 +53,6 @@ const Index = () => {
                 <td>Admin</td>
                 <td>Email</td>
                 <td>Password</td>
-                <td>Edit</td>
                 <td>Delete</td>
               </tr>
             </thead>
@@ -71,12 +70,6 @@ users.map((user, index)=>{
     <td>{ user.isAdmin ? "oui" : "non"}</td>
     <td>{user.email}</td>
     <td>{user.password}</td>
-    <td>
-        <Link href="/userAdmin">
-             {/* <a><i className="fa-solid fa-trash-can"></i>edit</a> */}
-             <a><i className={styles.user_action}></i>edit</a>
-        </Link>
-    </td>
     <td>
         {/* <Link href="/userAdmin">
             <a><i className="fa-solid fa-trash-can" onClick={handleDelete}></i>delete</a>

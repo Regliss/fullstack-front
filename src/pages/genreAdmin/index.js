@@ -46,7 +46,6 @@ const Index = () => {
             <thead>
               <tr>
                 <td>Title</td>
-                <td>Edit</td>
                 <td>Delete</td>
               </tr>
             </thead>
@@ -57,12 +56,6 @@ const Index = () => {
 
                     return (<tr key={index}>
                     <td>{genre.title}</td>
-                    <td>
-                        <Link href="/productAdmin">
-                            {/* <a><i className="fa-solid fa-trash-can"></i>edit</a> */}
-                            <a><i className={styles.product_action}></i>edit</a>
-                        </Link>
-                    </td>
                     <td>
                         <button className={styles.step_button} onClick={()=>handleDelete(genre)}>
                         delete
