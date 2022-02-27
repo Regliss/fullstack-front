@@ -17,7 +17,7 @@ const Index = () => {
     });
     }, [])
 
-    async function handleDelete (user) {
+    function handleDelete (user) {
         console.log("handle delete");
         //console.log(user._id);
         authService.deleteUser(user)
@@ -37,9 +37,9 @@ const Index = () => {
       <div className={styles.user__content}>
           <>
           <div>
-              <Link href="/addUser">
-                <a className={styles.user_create}><i></i>Create</a>
-            </Link>
+            <button className={styles.product_create}>
+                <a href="/addUser">Create</a>
+            </button>
           </div>
           <table>
             <thead>

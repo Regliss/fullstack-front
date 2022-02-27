@@ -3,14 +3,13 @@ import styles from "./Input.module.scss";
 
 const Input = (props) => {
     return (
-        <div className={styles.form__group}>
-            <label>{props.label}</label>
+        <div className={styles.form_input}>
             <input
                 type={props.type}
                 name={props.name}
                 id={props.id}
                 value={props.value}
-                placeholder={props.placehoder}
+                placeholder={props.placeholder}
                 required={props.required}
                 onChange={props.onChange}
             />

@@ -1,174 +1,78 @@
 import React, { useState } from "react";
-import styles from "./index.module.scss";
-import Titlepage from "../../components/UI/Title/TitlePage";
 import authService from "../../services/auth.service";
+import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
+import Input from "../../components/UI/Input/Input";
+import CheckboxInput from "../../components/UI/CheckboxInput";
+import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
+import styles from "./index.module.scss";
+import { useRouter } from "next/router";
 
-
-const Index = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-//   const [isSubscribe, setIsSubscribe] = useState("");
-//   const [isPremium, setIsPremium] = useState("");
-//   const [subscribeDate, setSubscribeDate] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-//   const handleIsSubscribeChange = (event) => {
-//     setIsSubscribe(event.target.value);
-//   };
-
-//   const handleIsPremiumChange = (event) => {
-//     setIsPremium(event.target.value);
-//   };
-
-//   const handleSubscribeDateChange = (event) => {
-//     setSubscribeDate(event.target.value);
-//   };
-
-  const handleIsAdminChange = (event) => {
-    setIsAdmin(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+const index = () => {
+  const router = useRouter();
+  const [user, setUser] = useState({ isAdmin: false, subscribeDate: "" });
 
   const handleSubmit = (e) => {
+    console.log(user);
     e.preventDefault();
-    authService.addAdminUser(user)
-    .then((data) => {
+    authService
+      .addAdminUser(user)
+      .then((data) => {
+        localStorage.setItem("token", JSON.stringify(data.token));
         console.log(data);
         router.push("/userAdmin");
       })
       .catch((err) => {
         console.log(err);
       });
-}
+  };
 
   return (
-    <div>
-        <div>
-            <Titlepage title="Add user" />
-        </div>
-        <div className={styles.register}>
-          <div className={styles.step_context}>
-          </div>
-          <form className={styles.form}>
-            <div>
-                <div><label htmlFor="lastName">LastName: </label></div>
-                <div>
-                    <input
-                    type="text"
-                    placeholder="LastName"
-                    name="lastName"
-                    id="lastName"
-                    autoComplete="off"
-                    value={lastName}
-                    onChange={handleLastNameChange}
-                    />
-                </div>
-              </div>
-              <div><label htmlFor="firstname">FirstName: </label></div>
-                <div>
-                    <input
-                    type="text"
-                    placeholder="FirstName"
-                    name="firstname"
-                    id="firstName"
-                    autoComplete="off"
-                    value={firstName}
-                    onChange={handleFirstNameChange}
-                    />
-                </div>
-            {/* <input
-              type="checkbox"
-              placeholder="IsSubscribe"
-              name="isSubscribe"
-              id="isSubscribe"
-              autoComplete="off"
-              value={isSubscribe}
-              onChange={handleIsSubscribeChange}
-            />
-            <input
-              type="checkbox"
-              placeholder="IsPremium"
-              name="isPremium"
-              id="isPremium"
-              autoComplete="off"
-              value={isPremium}
-              onChange={handleIsPremiumChange}
-            />
-            <input
-              type="texte"
-              placeholder="SubscribeDate"
-              name="subscribeDate"
-              id="subscribeDate"
-              autoComplete="off"
-              value={subscribeDate}
-              onChange={handleSubscribeDateChange}
-            /> */}
-            <div>
-                <div><label htmlFor="isAdmin">IsAdmin: </label></div>
-                <div>
-                <input
-                type="checkbox"
-                placeholder="IsAdmin"
-                name="isAdmin"
-                id="isAdmin"
-                autoComplete="off"
-                value={isAdmin}
-                onChange={handleIsAdminChange}
-                />
-                </div>
-            </div>
-            <div>
-                <div><label htmlFor="email">Email: </label></div>
-                <div>
-                <input
-                type="text"
-                placeholder="Email"
-                name="email"
-                id="email"
-                autoComplete="off"
-                value={email}
-                onChange={handleEmailChange}
-                />
-                </div>
-            </div>
-            <div>
-                <div><label htmlFor="password">Password: </label></div>
-                <div>
-                <input
-                type="password"
-                placeholder="Add a password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                />
-                </div>
-            </div>
-             <button className={styles.step_button} onClick={()=>handleSubmit(user)}>
-            Create
-          </button>
-          </form>
-        <></>
-        </div>
+    <div className={styles.add_user}>
+      <form className={styles.add_user_form} onSubmit={(e) => handleSubmit(e)}>
+        <AccueilTitle title="Create a new user" />
+        <Input
+          type="text"
+          label="firstName"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name"
+          onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+        />
+        <Input
+          type="text"
+          label="lastName"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
+          onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+        />
+        <Input
+          type="email"
+          label="email"
+          id="email"
+          name="email"
+          placeholder="Email address"
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        />
+        <Input
+          type="password"
+          label="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
+        />
+        <CheckboxInput
+          label="Is Admin"
+          id="isAdmin"
+          name="isAdmin"
+          value={user.isAdmin}
+          onChange={(e) => setUser({ ...user, isAdmin: !user.isAdmin })}
+        />
+        <AccueilButton label="Create" onClick={()=>handleSubmit}/>
+      </form>
     </div>
   );
 };
 
-export default Index;
+export default index;

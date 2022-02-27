@@ -8,8 +8,61 @@ import stripeService from "../../services/stripe.service";
 const stripePromise = loadStripe("pk_test_51IYB3kKHE4A4HHrOPwry6jr7QSnFpODKJliEseS4NYAxmsuAnRfVkNgfdDcSEsMPPOqCEc5NhCGowDFhoy5D9zlu00jW1rgElH");
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const stepsData = {
+    one: {
+      image: {
+        src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png",
+        alt: "step-1 image",
+      },
+      indicator: "STEP 1 OF 3",
+      title: "Finish setting up your account",
+      context:
+        "Netflix is personalized for you. Create a password to watch on any device at any time.",
+      icon: "",
+      list: [],
+    },
+    two: {
+      image: {},
+      indicator: "STEP 1 OF 3",
+      title: "Create a password to start your membership",
+      context: "Just a few more steps and you're done! We hate paperwork, too.",
+      icon: "",
+      list: [],
+    },
+    three: {
+      image: {
+        src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Checkmark.png",
+        alt: "step-2 image",
+      },
+      indicator: "STEP 2 OF 3",
+      title: "Choose your plan.",
+      context: "",
+      icon: "akar-icons:check",
+      list: [
+        "No commitments, cancel anytime.",
+        "Everything on Netflix for one low price.",
+        " Unlimited viewing on all your devices.",
+      ],
+    },
+    four: {
+      image: {
+        src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Checkmark.png",
+        alt: "step-2 image",
+      },
+      indicator: "STEP 2 OF 3",
+      title: "Choose the plan that’s right for you",
+      context: "",
+      icon: "akar-icons:check",
+      list: [
+        "Watch all you want. Ad-free.",
+        "Recommendations just for you.",
+        "Change or cancel your plan anytime.",
+      ],
+    },
+  };
+
+  const [account, setAccount] = useState({});
   const [step, setStep] = useState(1);
 
   const handleConfirmation = async () => {
@@ -32,23 +85,20 @@ const Index = () => {
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setAccount({ ...account, email: event.target.value })
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setAccount({ ...account, password: event.target.value })
   };
 
   return (
     <div className={styles.register}>
       {step === 1 ? (
         <Step
-          image={{
-            src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png",
-            alt: "step-1 image",
-          }}
-          indicator="STEP 1 OF 3"
-          title="Finish setting up your account"
+          image={stepsData.one.image}
+          indicator={stepsData.one.indicator}
+          title={stepsData.one.title}   
         >
           <div className={styles.step_context}>
             Netflix is personalized for you. Create a password to watch on any
@@ -63,9 +113,7 @@ const Index = () => {
       )}
 
       {step === 2 ? (
-        <Step
-          indicator="STEP 1 OF 3"
-          title="Create a password to start your membership"
+        <Step indicator={stepsData.two.indicator} title={stepsData.two.title}
         >
           <div className={styles.step_context}>
             Just a few more steps and you&apos;re done! We hate paperwork, too.
@@ -77,7 +125,7 @@ const Index = () => {
               name="email"
               id="email"
               autoComplete="off"
-              value={email}
+              // value={email}
               onChange={handleEmailChange}
             />
             <input
@@ -85,7 +133,7 @@ const Index = () => {
               placeholder="Add a password"
               name="password"
               id="password"
-              value={password}
+              // value={password}
               onChange={handlePasswordChange}
             />
             <button className={styles.step_button} onClick={() => setStep(step + 1)}>
@@ -99,12 +147,10 @@ const Index = () => {
 
       {step === 3 ? (
         <Step
-          image={{
-            src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Checkmark.png",
-            alt: "step-2 image",
-          }}
-          indicator="STEP 2 OF 3"
-          title="Choose your plan."
+          image={stepsData.three.image}
+          indicator={stepsData.three.indicator}
+          title={stepsData.three.title}
+          className={styles.signup_list_icon}
         >
           <ul className="step-list">
             <li>
@@ -130,12 +176,10 @@ const Index = () => {
 
       {step === 4 ? (
         <Step
-          image={{
-            src: "https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Checkmark.png",
-            alt: "step-2 image",
-          }}
-          indicator="STEP 2 OF 3"
-          title="Choose the plan that’s right for you"
+          image={stepsData.four.image}
+          indicator={stepsData.four.indicator}
+          title={stepsData.four.title}
+          className={styles.signup_list_icon}
         >
           <ul className="step-list">
             <li>
@@ -151,47 +195,79 @@ const Index = () => {
               Change or cancel your plan anytime.
             </li>
           </ul>
-          <div className={styles.plan}>
-            <div className={styles.plan_header}>
-              <div className={styles.planLabel}>Basic</div>
-              <div className={styles.planLabel}>Standard</div>
-              <div className={styles.planLabel}>Premium</div>
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Monthly price</td>
-                  <td>EUR8.99</td>
-                  <td>EUR13.49</td>
-                  <td>EUR17.99</td>
-                </tr>
-                <tr>
-                  <td>Video quality</td>
-                  <td>Good</td>
-                  <td>Better</td>
-                  <td>Best</td>
-                </tr>
-                <tr>
-                  <td>Resolution</td>
-                  <td>480p</td>
-                  <td>1080p</td>
-                  <td>4K+HDR</td>
-                </tr>
-                <tr>
-                  <td>Watch on your TV, computer, mobile phone and tablet</td>
-                  <td>
-                    <span className={styles.planGrid_booleanLabel}>Yes</span>
-                  </td>
-                  <td>
-                    <span className={styles.planGrid_booleanLabel}>Yes</span>
-                  </td>
-                  <td>
-                    <span className={styles.planGrid_booleanLabel}>Yes</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table className={styles.table}>
+            <tbody>
+              <tr>
+                <td></td>
+                <td className={styles.radio}>
+                  <input
+                    type="radio"
+                    name="input_radio"
+                    className={styles.input_radio}
+                    checked={props.plan === "basic"}
+                    value="basic"
+                    id="basic"
+                    onChange={() => props.setPlan("basic")}
+                  />
+                  <label htmlFor="basic">Basic</label>
+                </td>
+                <td className={styles.radio}>
+                  <input
+                    type="radio"
+                    name="input_radio"
+                    className={styles.input_radio}
+                    checked={props.plan === "standard"}
+                    value="standard"
+                    id="standard"
+                    onChange={() => props.setPlan("standard")}
+                  />
+                  <label htmlFor="standard">Standard</label>
+                </td>
+                <td className={styles.radio}>
+                  <input
+                    type="radio"
+                    name="input_radio"
+                    className={styles.input_radio}
+                    checked={props.plan === "premium"}
+                    value="premium"
+                    id="premium"
+                    onChange={() => props.setPlan("premium")}
+                  />
+                  <label htmlFor="premium">Premium</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Monthly price</td>
+                <td>EUR8.99</td>
+                <td>EUR13.49</td>
+                <td>EUR17.99</td>
+              </tr>
+              <tr>
+                <td>Video quality</td>
+                <td>Good</td>
+                <td>Better</td>
+                <td>Best</td>
+              </tr>
+              <tr>
+                <td>Resolution</td>
+                <td>480p</td>
+                <td>1080p</td>
+                <td>4K+HDR</td>
+              </tr>
+              <tr>
+                <td>Watch on your TV, computer, mobile phone and tablet</td>
+                <td>
+                  <span>Yes</span>
+                </td>
+                <td>
+                  <span>Yes</span>
+                </td>
+                <td>
+                  <span>Yes</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <button className={styles.step_button} onClick={handleConfirmation}>
           {/* <button className={styles.step_button} onClick={() => setStep(step + 1)}> */}
             next

@@ -1,174 +1,47 @@
 import React, { useState } from "react";
-import styles from "./index.module.scss";
-import Titlepage from "../../components/UI/Title/TitlePage";
 import genreService from "../../services/genre.service";
+import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
+import Input from "../../components/UI/Input/Input";
+import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
+import styles from "./index.module.scss";
+import { useRouter } from "next/router";
 
-
-const Index = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-//   const [isSubscribe, setIsSubscribe] = useState("");
-//   const [isPremium, setIsPremium] = useState("");
-//   const [subscribeDate, setSubscribeDate] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-//   const handleIsSubscribeChange = (event) => {
-//     setIsSubscribe(event.target.value);
-//   };
-
-//   const handleIsPremiumChange = (event) => {
-//     setIsPremium(event.target.value);
-//   };
-
-//   const handleSubscribeDateChange = (event) => {
-//     setSubscribeDate(event.target.value);
-//   };
-
-  const handleIsAdminChange = (event) => {
-    setIsAdmin(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+const index = () => {
+  const router = useRouter();
+  const [genre, setGenre] = useState();
 
   const handleSubmit = (e) => {
+    console.log(genre);
     e.preventDefault();
-    genreService.addAdminGenre(genre)
-    .then((data) => {
+    genreService
+      .addAdminGenre(genre)
+      .then((data) => {
+        // localStorage.setItem("token", JSON.stringify(data.token));
         console.log(data);
         router.push("/genreAdmin");
       })
       .catch((err) => {
         console.log(err);
       });
-}
+  };
 
   return (
-    <div>
-        <div>
-            <Titlepage title="Add genre" />
-        </div>
-        <div className={styles.register}>
-          <div className={styles.step_context}>
-          </div>
-          <form className={styles.form}>
-            <div>
-                <div><label for="lastName">LastName: </label></div>
-                <div>
-                    <input
-                    type="text"
-                    placeholder="LastName"
-                    name="lastName"
-                    id="lastName"
-                    autoComplete="off"
-                    value={lastName}
-                    onChange={handleLastNameChange}
-                    />
-                </div>
-              </div>
-              <div><label for="firstname">FirstName: </label></div>
-                <div>
-                    <input
-                    type="text"
-                    placeholder="FirstName"
-                    name="firstname"
-                    id="firstName"
-                    autoComplete="off"
-                    value={firstName}
-                    onChange={handleFirstNameChange}
-                    />
-                </div>
-            {/* <input
-              type="checkbox"
-              placeholder="IsSubscribe"
-              name="isSubscribe"
-              id="isSubscribe"
-              autoComplete="off"
-              value={isSubscribe}
-              onChange={handleIsSubscribeChange}
-            />
-            <input
-              type="checkbox"
-              placeholder="IsPremium"
-              name="isPremium"
-              id="isPremium"
-              autoComplete="off"
-              value={isPremium}
-              onChange={handleIsPremiumChange}
-            />
-            <input
-              type="texte"
-              placeholder="SubscribeDate"
-              name="subscribeDate"
-              id="subscribeDate"
-              autoComplete="off"
-              value={subscribeDate}
-              onChange={handleSubscribeDateChange}
-            /> */}
-            <div>
-                <div><label for="isAdmin">IsAdmin: </label></div>
-                <div>
-                <input
-                type="checkbox"
-                placeholder="IsAdmin"
-                name="isAdmin"
-                id="isAdmin"
-                autoComplete="off"
-                value={isAdmin}
-                onChange={handleIsAdminChange}
-                />
-                </div>
-            </div>
-            <div>
-                <div><label for="email">Email: </label></div>
-                <div>
-                <input
-                type="text"
-                placeholder="Email"
-                name="email"
-                id="email"
-                autoComplete="off"
-                value={email}
-                onChange={handleEmailChange}
-                />
-                </div>
-            </div>
-            <div>
-                <div><label for="password">Password: </label></div>
-                <div>
-                <input
-                type="password"
-                placeholder="Add a password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                />
-                </div>
-            </div>
-             <button className={styles.step_button} onClick={handleSubmit}>
-            Create
-          </button>
-          </form>
-        <></>
-        </div>
+    <div className={styles.add_genre}>
+      <form className={styles.add_genre_form} onSubmit={(e) => handleSubmit(e)}>
+        <AccueilTitle title="Create a new genre" />
+        <Input
+          type="text"
+          label="title"
+          id="title"
+          name="title"
+          placeholder="Title"
+          onChange={(e) => setGenre({ ...genre, title: e.target.value })}
+        />
+        <AccueilButton label="Create" onClick={()=>handleSubmit}/>
+      </form>
+      <br></br>
     </div>
   );
 };
 
-export default Index;
+export default index;

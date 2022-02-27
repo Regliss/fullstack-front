@@ -1,11 +1,21 @@
-.register {
-    // background-color: #fff;
-    height: 40vh;
+.add_user {
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     
-    .step {
-        padding: 1.25rem  2rem;
-	}
-} 
+    &_form {
+        width: 100%;
+        height: 100%;
+        max-width: 450px;
+        max-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 0.25rem;
+        background: #000;
+        opacity: 90%;
+    }
+}

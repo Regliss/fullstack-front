@@ -1,14 +1,17 @@
 import React from 'react';
 import HeaderLogo from '../header/HeaderLogo/HeaderLogo';
+import HeaderMenu from '../header/HeaderMenu/HeaderMenu';
 import HeaderToolbar from '../header/HeaderToolbar/HeaderToolbar';
 import Footer from '../footer/Footer';
 import styles from "./MainLayout.module.scss";
 
-const Mainlayout = ({children}) => {
+
+const MainLayout = ({children}) => {
     return (
         <>
-            <header className={styles.header__main}>
+            <header className={styles.header_main}>
                 <HeaderLogo />
+                <HeaderMenu />
                 <HeaderToolbar/>
             </header>
             <main>
@@ -23,4 +26,4 @@ const Mainlayout = ({children}) => {
     );
 }
 
-export default Mainlayout;
+export default MainLayout;

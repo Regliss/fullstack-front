@@ -1,15 +1,103 @@
-.register {
+.register { 
     background-color: #fff;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    .step {
-        padding: 1.25rem  2rem;
-	}
-} 
 
-.Footer_footer__main__VquXA {
-    background-color: #fff !important;
+    &_form {
+        width: 100%;
+        padding: 2.2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        input {
+            border: 1px solid #000 !important;
+            background-color: #fff !important;
+
+            &::placeholder {
+                color: #8c8c8c !important;
+            }
+        }
+
+        button {
+            width: 80% !important;
+        }
+    }
+
+    &_list {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 1.5rem;
+
+        &_icon {
+            width: 6rem;
+            height: 6rem;
+            
+            @media (max-width: 595px)  {
+                width: 6rem !important;
+            }
+        }
+
+        li {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.625rem 0;
+            font-size: 1.125rem;
+
+            .check_icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: 0.625rem;
+                color: red;
+            }
+        }
+    }
+}
+.table {
+    width: 100%;
+
+    tr{
+        height: 3.75rem;
+        border-bottom: 1px solid #ccc;
+
+        &:last-child {
+            border: 0;
+        }
+        td {
+            vertical-align: middle;
+            padding: 0 1rem;
+        }
+        .radio {
+            background: #e50914;
+            border: 0.0625rem solid #fff;
+            border-radius: 0.125rem;
+
+            input[type="radio"].input_radio  {
+                display: none;
+            }
+            input[type="radio"].input_radio + label {
+                padding: 0.0625rem;
+                color: #e5e5e5;
+                font-weight: 500;
+                border: 0;
+                font-size: 1rem;
+                margin: 0 auto;
+            }
+
+            input[type="radio"].input_radio:checked + label {
+                color: #fff;
+                letter-spacing: 0.0625rem;
+                font-size: 1.125rem;
+                font-weight: 600;
+            }
+        }
+    }
 }

@@ -36,6 +36,11 @@ const Index = () => {
       <Titlepage title="Genre admin" />
       <div className={styles.genre__content}>
           <>
+          <div>
+            <button className={styles.product_create}>
+                <a href="/addGenre">Create</a>
+            </button>
+          </div>
           <table>
             <thead>
               <tr>

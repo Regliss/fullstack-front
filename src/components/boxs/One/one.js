@@ -1,6 +1,7 @@
 import React from "react";
 import Item from "../One/item";
 import styles from "./One.module.scss";
+import Signup from "../../UI/Button/Signup";
 
 const One = () => {
   let ones = [
@@ -37,6 +38,7 @@ const One = () => {
       {ones.map((one, index) => {
         return <Item key={index} one={one} />;
       })}
+      <Signup />
     </div>
   );
 };
