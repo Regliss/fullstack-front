@@ -5,7 +5,7 @@ import styles from "./Signup.module.scss";
 
 const Signup = () => {
   return (
-    <Link href="/signup">
+    <Link href="/register">
       <a className={styles.btn_sign_up}>
         Finish Sign Up
         <Icon className={styles.btn_sign_up_icon} icon="ep:arrow-right-bold" />
