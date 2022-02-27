@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { UseState } from "react";
 import authService from "../../services/auth.service";
 import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
 import Input from "../../components/UI/Input/Input";
 import CheckboxInput from "../../components/UI/CheckboxInput";
 import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
 import styles from "./index.module.scss";
-import { useRouter } from "next/router";
+import { UseRouter } from "next/router";
 
 const index = () => {
-  const router = useRouter();
-  const [user, setUser] = useState({ isAdmin: false, subscribeDate: "" });
+  const router = UseRouter();
+  const [user, setUser] = UseState({ isAdmin: false, subscribeDate: "" });
 
   const handleSubmit = (e) => {
     console.log(user);
