@@ -1,7 +1,7 @@
 export default {
     getGenres(token) {
-        // return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"/api/v1/products", {
-        return fetch("http://localhost:3131/api/v1/genres/genre/", {
+        return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"/api/v1/genres/genre", {
+        // return fetch("http://localhost:3131/api/v1/genres/genre/", {
         // return fetch(`https://app-e-shop-ynov.herokuapp.com/api/v1/users/login`, {
             method: "GET",
             headers: {

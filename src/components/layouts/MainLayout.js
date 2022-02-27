@@ -4,14 +4,16 @@ import HeaderMenu from '../header/HeaderMenu/HeaderMenu';
 import HeaderToolbar from '../header/HeaderToolbar/HeaderToolbar';
 import Footer from '../footer/Footer';
 import styles from "./MainLayout.module.scss";
+import { useRouter } from "next/router";
 
 
 const MainLayout = ({children}) => {
+    const router = useRouter();
     return (
         <>
             <header className={styles.header_main}>
                 <HeaderLogo />
-                <HeaderMenu />
+                {router.pathname == "/register" ? <></> : <HeaderMenu />}
                 <HeaderToolbar/>
             </header>
             <main>

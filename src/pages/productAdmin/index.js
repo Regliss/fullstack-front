@@ -9,13 +9,13 @@ const Index = () => {
     const router = useRouter();
     const [products, setProducts] = useState([]);
 
-    // useEffect(()=>{
-    //     productService.getProducts()
-    // .then((data) => {
-    //     setProducts(data);
-    //     console.log(data);
-    // });
-    // }, [])
+    useEffect(()=>{
+        productService.getProducts()
+    .then((data) => {
+        setProducts(data);
+        console.log(data);
+    });
+    }, [])
 
     async function handleDelete (product) {
         console.log("handle delete");

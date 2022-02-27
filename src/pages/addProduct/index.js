@@ -11,13 +11,13 @@ const index = () => {
   const router = useRouter();
   const [product, setProduct] = useState();
 
-  useEffect(()=>{
-    genreService.getGenres()
-    .then((data) => {
-        setGenres(data);
-        console.log(data);
-    });
-    }, [])
+  // useEffect(()=>{
+  //   genreService.getGenres()
+  //   .then((data) => {
+  //       setGenres(data);
+  //       console.log(data);
+  //   });
+  //   }, [])
 
   const handleSubmit = (e) => {
     console.log(product);

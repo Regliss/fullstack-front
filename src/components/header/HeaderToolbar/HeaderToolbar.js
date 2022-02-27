@@ -14,7 +14,7 @@ const HeaderToolbar = () => {
     <div className={styles.header_toolbar}>
       {  token !== null && token !== undefined && token !== {} ? (
         <Image
-          src="/pulic/images/account/accountImage.png"
+          src="/images/account/accountImage.png"
           alt="Account image"
           width={52}
           height={32}
