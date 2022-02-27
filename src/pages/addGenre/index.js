@@ -6,7 +6,7 @@ import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   const [genre, setGenre] = useState();
 
@@ -44,4 +44,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

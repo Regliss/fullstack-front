@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import authService from "../../services/auth.service";
 import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
 import Input from "../../components/UI/Input/Input";
-import CheckboxInput from "../../components/UI/CheckboxInput";
+import CheckboxInput from "../../components/UI/CheckboxInput/Index";
 import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   const [user, setUser] = useState({ isAdmin: false, subscribeDate: "" });
 
@@ -75,4 +75,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
