@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import Titlepage from "../../components/UI/Title/TitlePage";
 import styles from "./index.module.scss";
 import genreService from '../../services/genre.service';
