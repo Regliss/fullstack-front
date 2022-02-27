@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import authService from "../../services/auth.service";
 import AccueilTitle from "../../components/UI/AccueilTitle/AccueilTitle";
 import Input from "../../components/UI/Input/Input";
-import CheckboxInput from "../../components/UI/CheckboxInput/Index";
+import CheckboxInput from "../../components/UI/CheckboxInput";
 import AccueilButton from "../../components/UI/AccueilButton/AccueilButton";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";

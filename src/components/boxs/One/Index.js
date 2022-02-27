@@ -1,9 +1,9 @@
 import React from "react";
-import Item from "../One/item";
+import Item from "./item";
 import styles from "./One.module.scss";
 import Signup from "../../UI/Button/Signup";
 
-const One = () => {
+const Index = () => {
   let ones = [
     {
       title: "Enjoy on your TV.",
@@ -43,4 +43,4 @@ const One = () => {
   );
 };
 
-export default One;
+export default Index;
