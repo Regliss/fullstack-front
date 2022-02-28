@@ -1,10 +1,16 @@
-import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./HeaderMenu.module.scss";
+import React, { useState, useEffect } from "react";
 
 const HeaderMenu = () => {
   const router = useRouter();
+  const [isAdmin, setIsAdmin] = useState();
+
+  useEffect(() => {
+    setIsAdmin(localStorage.getItem("isAdmin"));
+  });
+
   return (
     <div className={styles.header_menu}>
       <nav>
@@ -14,24 +20,9 @@ const HeaderMenu = () => {
               <a>Home</a>
             </Link>
           </li>
-          {/* <li
-            className={router.pathname == "/tv-programmes" ? styles.active : ""}
-          >
-            <Link href="/tv-programmes">
-              <a>Tv Programmes</a>
-            </Link>
-          </li> */}
-          {/* <li className={router.pathname == "/genres" ? styles.active : ""}>
-            <Link href="/genres">
-              <a>Films</a>
-            </Link>
-          </li> */}
-          {/* <li className={router.pathname == "/wishlist" ? styles.active : ""}>
-            <Link href="/wishlist">
-              <a>My List</a>
-            </Link>
-          </li> */}
-          <li className={router.pathname == "/userAdmin" ? styles.active : ""}>
+          {  isAdmin !== null && isAdmin !== undefined && isAdmin !== {} && isAdmin !== false ? (
+            <ul>
+            <li className={router.pathname == "/userAdmin" ? styles.active : ""}>
             <Link href="/userAdmin">
               <a>User Admin</a>
             </Link>
@@ -46,6 +37,30 @@ const HeaderMenu = () => {
               <a>Genre Admin</a>
             </Link>
           </li>
+          </ul>
+          ) : (
+            <></>
+          )}
+          {/* <li className={router.pathname == "/userAdmin" ? styles.active : ""}>
+            <Link href="/userAdmin">
+              <a>User Admin</a>
+            </Link>
+          </li>
+          <li className={router.pathname == "/productAdmin" ? styles.active : ""}>
+            <Link href="/productAdmin">
+              <a>Product Admin</a>
+            </Link>
+          </li>
+          <li className={router.pathname == "/genreAdmin" ? styles.active : ""}>
+            <Link href="/genreAdmin">
+              <a>Genre Admin</a>
+            </Link>
+          </li> */}
+          {/* ) : (
+            <></>
+          )} */}
+          
+          
         </ul>
       </nav>
     </div>

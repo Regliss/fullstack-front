@@ -20,7 +20,7 @@ const HeaderToolbar = () => {
           height={32}
         />
       ) : (
-        <Link href="/register">
+        <Link href="/login">
           <a className={styles.header_toolbar_button}>Sign In</a>
         </Link>
       )}

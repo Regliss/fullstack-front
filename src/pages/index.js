@@ -3,6 +3,7 @@ import Zero from '../components/boxs/zero/Zero';
 import One from '../components/boxs/One/One';
 import Two from '../components/boxs/Two/Two';
 import Signup from '../components/UI/Button/Signup';
+import styles from "./index.module.scss";
 export default function Home() {
   return (
     <div className="container">
@@ -15,7 +16,9 @@ export default function Home() {
         <Zero/>
         <One/>
         <Two/>
-        <Signup/>
+        <div className={styles.signup}>
+          <Signup/>
+        </div>        
       </main>
     </div>
   )

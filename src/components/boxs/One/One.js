@@ -38,7 +38,6 @@ const Index = () => {
       {ones.map((one, index) => {
         return <Item key={index} one={one} />;
       })}
-      <Signup />
     </div>
   );
 };

@@ -216,7 +216,7 @@ const Index = () => {
               </tr>
             </tbody>
           </table>
-          <RegisterButton onClick={() => setStep(step + 1)} />
+          <RegisterButton onClick={handleConfirmation} />
         </Step>
       ) : (
         <></>
