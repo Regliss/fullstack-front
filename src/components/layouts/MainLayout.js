@@ -13,7 +13,7 @@ const MainLayout = ({children}) => {
         <>
             <header className={styles.header_main}>
                 <HeaderLogo />
-                {router.pathname == "/register" || router.pathname == "/step3" ? <></> : <HeaderMenu />}
+                {router.pathname == "/register" || router.pathname == "/step3" || router.pathname == "/" ? <></> : <HeaderMenu />}
                 <HeaderToolbar/>
             </header>
             <main>
