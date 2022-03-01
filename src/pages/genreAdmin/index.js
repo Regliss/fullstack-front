@@ -23,7 +23,7 @@ const Index = () => {
         genreService.deleteGenre(genre)
         .then((data) => {
             console.log("data");
-            router.push("/genreAdmin");
+            router.reload("/genreAdmin");
           })
           .catch((err) => {
             console.log(err);
@@ -32,7 +32,7 @@ const Index = () => {
   
     return (
       
-        <div>
+        <div className={styles.genre_admin}>
       <Titlepage title="Genre admin" />
       <div className={styles.genre__content}>
           <>
@@ -42,7 +42,7 @@ const Index = () => {
                 <Link href="/addGenre">Create</Link>
             </button>
           </div>
-          <table>
+          <table className={styles.genre_admin_table}>
             <thead>
               <tr>
                 <td>Title</td>

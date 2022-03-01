@@ -23,7 +23,7 @@ const Index = () => {
         authService.deleteProduct(product)
         .then((data) => {
             console.log("data");
-            router.push("/productAdmin");
+            router.reload("/productAdmin");
           })
           .catch((err) => {
             console.log(err);
@@ -32,7 +32,7 @@ const Index = () => {
   
     return (
       
-        <div>
+        <div className={styles.product_admin}>
       <Titlepage title="Product admin" />
       <div className={styles.product__content}>
           <>
@@ -41,7 +41,7 @@ const Index = () => {
                 <Link href="/addProduct">Create</Link>
             </button>
           </div>
-          <table>
+          <table className={styles.product_admin_table}>
             <thead>
               <tr>
                 <td>Title</td>
@@ -72,6 +72,7 @@ const Index = () => {
                     <td>{product.releaseDate}</td>
                     <td>{product.duration}</td>
                     <td>{product.description}</td>
+                    <td>{product.director}</td>
                     <td>{product.distribution}</td>
                     <td>{product.scriptwriter}</td>
                     <td>

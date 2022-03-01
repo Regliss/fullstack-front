@@ -23,7 +23,7 @@ const Index = () => {
         authService.deleteUser(user)
         .then((data) => {
             console.log("data");
-            router.push("/userAdmin");
+            router.reload("/userAdmin");
           })
           .catch((err) => {
             console.log(err);
@@ -32,17 +32,17 @@ const Index = () => {
     
     return (
       
-        <div>
+        <div className={styles.user_admin}>
       <Titlepage title="User admin" />
       <div className={styles.user__content}>
           <>
           <div>
-            <button className={styles.product_create}>
+            <button className={styles.user_create}>
                 {/* <a href="/addUser">Create</a> */}
                 <Link href="/addUser">Create</Link>
             </button>
           </div>
-          <table>
+          <table className={styles.user_admin_table}>
             <thead>
               <tr>
                 <td>FirstName</td>

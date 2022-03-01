@@ -45,7 +45,7 @@ export default {
         })
         .then(res => res.json())
     },
-    addAdminProduct(token) {
+    addAdminProduct(product, token) {
         // return fetch(`http://localhost:3131/api/v1/users/delete/${user._id}`, {
         return fetch(process.env.NEXT_PUBLIC_API_URLAPI_URL+"api/v1/products/products/add-product", {
         // return fetch(`${process.env.NEXT_PUBLIC_API_URLAPI_URL}api/v1/users/delete/${user._id}`, {
@@ -54,7 +54,7 @@ export default {
                 "authorization": token,
                 "content-type":"application/json"
             },
-            // body: JSON.stringify(user),
+            body: JSON.stringify(product),
         })
         .then(res => res.json())
     },
